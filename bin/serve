@@ -82,7 +82,7 @@ if (program.jade) {
       if (err) return next(err);
       try {
         var fn = jade.compile(str, { filename: file });
-        str = fn();
+        str = fn({require: require});
         res.setHeader('Content-Type', 'text/html');
         res.setHeader('Content-Length', Buffer.byteLength(str));
         res.end(str);
